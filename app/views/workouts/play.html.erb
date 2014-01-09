@@ -1,0 +1,43 @@
+<!--<audio id="beep">-->
+  <!--<source src="assets/sounds/beep.mp3" type="audio/mpeg">-->
+  <!--&lt;!&ndash;<source src="assets/sounds/beep.ogg" type="audio/ogg">-->
+  <!--<embed height="50" width="100" src="horse.mp3"> &ndash;&gt;-->
+<!--</audio>-->
+<div id="workout-play-area" data-workout-url="<%= user_workout_url(id: @workout.id) %>" data-return-url="<%= complete_workout_url(id: @workout.id) %>">
+  <div id="workout-meta">
+    <div id="workout-name-time">
+      <span id="workout-name">Workout:<%= @workout.name %> </span> --<br>
+      Goal Time:<span id="workout-time"> <%= @workout.goal_time %>:00</span>
+    </div>
+    <div id="actual-workout-time"></div>
+    <div id="workout-progress"></div>
+    <div id="workout-description"><%= @workout.descript %></div>
+  </div>
+  <button id="workout-play-start">Start!</button>
+  <div id="workout-play-start-area">
+    <div id="segment-meta">
+      Superset <span id="segment-position"></span> -- </span><span id="segment-name"></span>
+      <br><span id="segment-sets"></span>
+    </div>
+  </div>
+  <div id="exercise-meta">
+    <div id="exercise-name-time"><span id="exercise-name"></span><br> <span id="exercise-time"></span></div>
+    <div id="timer"></div>
+    <div id="exercise-progress"></div>
+    <button id="finished">FINISHED!</button>
+    <div id="done-workout"><%= link_to 'AWESOME!!!', log_user_path(fromDate: Date.today, toDate:Date.today) %></div>
+    <div id="exercise-description"></div>
+  </div>
+  <div id="workout-outline">
+    <% @workout.segments.each do |seg| %>
+       <p class="segment-name not-done"><%= seg.name %></p>
+        <%  seg.exercises.each do |ex| %>
+           <p class="exercise-name not-done"><%= ex.name %>
+             <span class="display">
+               <%= if ex.time then "#{ex.time} minute(s)" else "#{seg.sets}X#{ex.reps} #{ex.weight} #{ex.weight_unit}" end %>
+             </span></p>
+        <% end %>
+        <p class="rest">Rest for <%= seg.rest_time %> seconds</p>
+    <% end %>
+  </div>
+</div>

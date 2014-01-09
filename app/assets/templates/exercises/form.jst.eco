@@ -1,0 +1,15 @@
+<div id="exercise-form">
+  <h3><%= @formName %></h3>
+
+  <form name="form1" method="post" action="">
+    <p>
+      <label for="descript">Description:</label>
+      <textarea name="descript" cols="80" rows="5" id="descript"><%= @descript %></textarea>
+    </p>
+
+    <p>
+      <input type="submit" name="submit" id="submit" value="Submit">
+      <button type="button" class="cancel-exercise-edit">Cancel</button>
+    </p>
+  </form>
+</div>

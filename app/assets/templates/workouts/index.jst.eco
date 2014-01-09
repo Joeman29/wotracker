@@ -1,0 +1,4 @@
+<h2><span class="editable" data-workout="name"><%= @workout.name %></span> -- <span class="editable" data-workout="goal_time"><%= @workout.goal_time %></span> min.</h2>
+<div id="workout-display"></div>
+<button class="new-segment">New Workout Section</button>
+

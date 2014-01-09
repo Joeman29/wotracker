@@ -1,0 +1,64 @@
+<script>
+  $(document).on('myPageLoadEvent', function(){
+     $('input').change(function(e){
+        var fromDate = $('.from-date input').val();
+        var toDate =   $('.to-date input').val();
+        $.post('<%= historyCalendar_user_path %>',{fromDate:fromDate, toDate:toDate}, function(response){
+            $('#calendar-area').html(response);
+            $('.workout-log-entry').click(function(e){
+                $('#workout-detail-views div.workout-entry-detail-view').appendTo($('#workout-detail-store'));
+                var id = $(e.currentTarget).attr('id');
+                var detailView = $('#'+id+'-detail');
+                $("#workout-detail-views").html(detailView);
+                $(detailView).show();
+            });
+            var ratingIcons = $('.workout-log-entry span.ui-icon');
+            ratingIcons.mouseover(function(e){
+                var num = $(e.target).data('rating');
+                var currIcons = $(e.target).parent('.workout-rating').find('.ui-icon');
+                for(var i=0; i<num; i++){
+                    $(currIcons[i]).addClass('ui-icon-star').removeClass('ui-icon-carat');
+                }
+            });
+            ratingIcons.mouseout(function(e){
+                var currIcons = $(e.target).parent('.workout-rating').find('.ui-icon');
+                currIcons.each(function(i, f){
+                    if(!$(f).data('real-rating')){
+                        $(f).addClass('ui-icon-carat').removeClass('ui-icon-star');
+                    }
+                });
+            });
+            ratingIcons.click(function(e){
+                var num = $(e.target).data('rating');
+                var currIcons = $(e.target).parent('.workout-rating').find('.ui-icon');
+                var i;
+                for(i=0; i<num; i++){
+                    $(currIcons[i]).addClass('ui-icon-star').removeClass('ui-icon-carat').data('real-rating', true);
+                }
+                for(i=i; i<5;i++){
+                    $(currIcons[i]).addClass('ui-icon-carat').removeClass('ui-icon-star').data('real-rating', false);
+                }
+                var id = $(e.target).parent('.workout-log-entry').data('id')
+                $.ajax('<%= api_user_completed_workouts_path(user_id:current_user.id) %>/'+id , {
+                    method: 'put',
+                    data: {rating: num},
+                    success: function(response){
+                        console.log(response);
+                    },
+                    error: function(e){
+                        console.log(e);
+                    }
+                });
+            });
+        });
+     });
+      $('input').change();
+  });
+</script>
+<div class="date-range-picker">
+<form name="date-range">  <span class="from-date"><%= label_tag :from_date, 'From:' %> <%= date_field_tag :from_date, (@fromDate || Date.today - 1.week) %></span>
+  <span class="to-date"><%= label_tag :to_date, 'To:' %> <%= date_field_tag  :to_date,(@toDate || Date.today) %></span></form>
+</div>
+<div id="calendar-area"></div>
+<div id="workout-detail-views"></div>
+<div id="workout-detail-store"></div>

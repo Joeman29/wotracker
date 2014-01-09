@@ -1,0 +1,38 @@
+<div id="calendar">
+  <% @completed_workouts.each do |cw| %>
+       <a class="workout-log-entry" id="workout-<%= cw.id %>" data-id="<%= cw.id %>">
+        <%= cw.name %> -- <span class="workout-log-date"><%= cw.date.strftime('%m/%d/%Y') %></span>
+        Time: <%= time_to_string cw.time %>
+         <span class="workout-rating">
+           <% for i in 1..cw.rating do%>
+               <%= content_tag(:span,'', {class:'filled-star ui-icon ui-icon-star', data:{real_rating:"#{true}", rating:"#{i}"}}) %>
+           <% end %>
+           <% for z in (i || 0)+1..5 do %>
+               <%= content_tag(:span, '', {class:'empty-star ui-icon ui-icon-carat', data:{rating:"#{z}"}}) %>
+           <% end  %>
+         </span>
+      </a>
+      <div class="workout-entry-detail-view" id="workout-<%= cw.id %>-detail">
+        <% cw.completed_segments.each do |seg| %>
+            <table>
+              <thead>
+                <tr>
+                  <th><%= seg.name %></th>
+                  <% for i in 1..seg.sets %>
+                     <th>Set <%= i %> </th>
+                  <% end  %>
+                </tr>
+              </thead>
+                <% seg.completed_exercises.each do |ex|  %>
+                <tr><td><%= ex.name %></td>
+                  <% for i in 0...seg.sets do %>
+                      <td><%= time_to_string ex.timeset[i].to_i %></td>
+                  <% end %>
+                </tr>
+
+             <% end %>
+            </table>
+        <% end %>
+      </div>
+   <% end %>
+</div>

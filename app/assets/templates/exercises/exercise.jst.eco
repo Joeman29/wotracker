@@ -1,0 +1,29 @@
+<td><span><%= @position %></span></td>
+<td title="<%= @descript %>"><span class="exercise-name"><%= @name %></span><input class="exercise-name-edit" name="name" type="text" value="<%= @name %>"/></td>
+<td>
+  <label for="kind">Type:</label>
+  <select name="kind" class="kind">
+    <option value="Weight Lifting" data-selectors=".reps, .weight, .weight_unit">Weight Lifting</option>
+    <option value="Bodyweight" data-selectors=".reps">Bodyweight</option>
+    <option value="Plyometric" data-selectors=".reps">Plyometric</option>
+    <option value="Cardio/Aerobic" data-selectors=".time">Cardio/Aerobic</option>
+    <option value="Stretch" data-selectors=".time">Stretch</option>
+    <option value="Other">Other</option>
+  </select>
+</td>
+<td class="reps-time">
+  <span class="sets"><%= @sets %></span> X
+     <span class="hideable">
+      <span class="time"><input name="time" type='number' value="<%= @time %>"></input> min.</span>
+      <span class="reps"><input name="reps" type='number' value="<%= @reps %>"></input> reps</span>
+      <span class="weight"><input name="weight" type='number' value="<%= @weight %>"></input> </span>
+      <span class="weight_unit">
+        <select name="weight_unit">
+          <option value="kg" selected>kg</option>
+          <option value="lb">lb</option>
+        </select>
+      </span>
+     </span>
+</td>
+<td><a class="edit-exercise"><span class="ui-button-icon-primary ui-icon ui-icon-pencil"></span></a></td>
+<td><a class="delete-exercise"><span class="ui-button-icon-primary ui-icon ui-icon-trash"></span></a></td>

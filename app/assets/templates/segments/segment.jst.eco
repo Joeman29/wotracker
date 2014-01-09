@@ -1,0 +1,23 @@
+<h3>Superset <span class="segment-position"><%= @position %></span> --
+  <span class="segment-name"><%= @name %></span>
+  <input type="text" name="name" class="segment-value-edit hidden" value="<%= @name %>">
+
+</h3>
+<p>Repeat <select name="sets">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+</select> times</p>
+<a class="delete-segment">Delete</a>
+<table class="segment-table">
+   <thead><tr><th>#</th><th>Name</th><th>Type</th><th>Reps/Weight/Time</th><th><a class="new-exercise">+</a></th> </tr></thead>
+</table>
+<div class="rest-time"><input class="segment-value-edit" name="rest_time" type="number" value="<%= @rest_time %>" step="5"> Seconds rest...</div>
+

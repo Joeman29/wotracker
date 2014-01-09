@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WOTracker</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<header>
+</header>
+<div id="nav-wrapper" class="ui-state-focus">
+  <nav class="ui-state-active">
+    <%=  %>
+    <%= link_to 'Contact Us', '/contact' %>
+    <%= link_to 'Login', login_path %>
+    <%= link_to 'Logout', logout_path %>
+    <%= link_to 'Register', register_path %>
+  </nav>
+</div>
+<div class="container">
+
+  <div id="under-nav"><div id="content">
+    <div class="sidebar1">
+        <ul class="nav">
+          <% if current_user %>
+          <li><%= link_to 'My Profile', edit_user_path(current_user) %></li>
+          <li><%= link_to 'Create New Workout', new_user_workout_path(current_user) %></li>
+          <li><%= link_to 'My Workouts', user_workouts_path(current_user) %></li>
+          <li><%= link_to 'Edit Workout', user_workouts_path(current_user) %>
+            <ul>
+              <% current_user.workouts.each do |wo| %>
+                <li> <%= link_to wo.name, edit_user_workout_path(user_id:current_user.id, id: wo.id) %> </li>
+              <% end %>
+            </ul>
+          </li>
+          <li><%= link_to 'Play Workout', user_workouts_path(current_user) %>
+            <ul>
+              <% current_user.workouts.each do |wo| %>
+                <li> <%= link_to wo.name, play_user_workout_path(user_id:current_user.id, id: wo.id) %> </li>
+              <% end %>
+            </ul>
+          </li>
+          <li><%= link_to 'My Schedule', calendar_user_path(current_user) %></li>
+          <li><%= link_to 'My History', log_user_path(current_user) %></li>
+          <% end %>
+        </ul>
+    <!-- end .sidebar1 --></div>
+  <main>
+
+    <%= yield %>
+  </main>
+  <aside>
+    <h4>Backgrounds</h4>
+    <p></p>
+  </aside>
+  </div></div> <!-- end .container --></div>
+  <footer>
+    <p>Copyright Joeman</p>
+    <address>
+      Address Content
+    </address>
+  </footer>
+
+</body>
+</html>

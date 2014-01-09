@@ -1,0 +1,15 @@
+@import "compass";
+
+$red: #DB0000;
+$blue: #2664BB;
+$black: #0F0805;
+$grey: #bdb8bc;
+$white: #FFFFFF;
+$darkblue: darken($blue, 20);
+$lightblue: lighten($blue, 20);
+$ultralightblue: lighten($lightblue, 20);
+$orange: #FEB43D;
+
+$page-width: 1400px;
+$sidebar1-width: 180px;
+$sidebar2-width: 180px;

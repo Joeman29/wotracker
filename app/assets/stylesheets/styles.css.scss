@@ -1,0 +1,140 @@
+@import 'vars';
+@charset "utf-8";
+$fontsurl: 'lets_go_digital_regular-webfont';
+@font-face {
+  font-family: 'Digital';
+  src: url("#{$fontsurl}.eot");
+  src: url("#{$fontsurl}.eot?#iefix") format('embedded-opentype'),
+  url("#{$fontsurl}.woff") format('woff'),
+  url("#{$fontsurl}.ttf") format('truetype'),
+  url("#{$fontsurl}.svg#lets_go_digitalregular") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@mixin nav-links{
+  text-decoration: none;
+}
+body {
+  font-family: Verdana,Arial,sans-serif;
+  background-color: $white;
+  margin: 0;
+  padding: 0;
+  color: $black;
+}
+.container {
+  width: $page-width;
+  background-color: $white;
+  margin: 0 auto;
+}
+header {
+  font-family: Georgia, Times, serif;
+  background: $blue;
+  height: 190px;
+}
+#nav-wrapper{
+  font-family: Georgia, Times, serif;
+  height: 22px;
+  margin-bottom: 22px;
+}
+nav{
+    padding: 10px;
+    width: $page-width - 200;
+    margin: auto;
+    top: -10px;
+    position: relative;
+    border-radius: 5px;
+    text-align: center;
+    a {
+      @include nav-links;
+      font-size: 14px;
+      padding: 12px 80px;
+    }
+}
+#content{
+  background-color: $white;
+}
+.sidebar1 {
+  float: left;
+  width: 180px;
+}
+main {
+  padding: 10px 0;
+  width: $page-width - $sidebar1-width - $sidebar2-width - 50px;
+  float: left;
+  margin: 0 0 0 15px;
+}
+
+input, textarea{
+  outline: none;
+}
+a{
+  color: $darkblue;
+  text-decoration: none;
+  &:hover{
+    color: $orange;
+  }
+}
+ul, ol, dl {
+    padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: Georgia, Times, serif;
+	margin-top: 0;
+    padding-right: 15px;
+	padding-left: 15px;
+    display: inline;
+}
+a img {
+	border: none;
+}
+a:hover, a:active, a:focus {
+	text-decoration: none;
+}
+aside {
+	float: right;
+	width: 180px;
+	padding: 10px 0;
+    height: 650px;
+}
+footer {
+	padding: 10px 0;
+	background-color: $ultralightblue;
+	position: relative;
+	clear: both;
+}
+.fltrt {
+    float: right;
+	margin-left: 8px;
+}
+.fltlft {
+    float: left;
+	margin-right: 8px;
+}
+.clearfloat {
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+header, section, footer, aside, article, figure {
+	display: block;
+}
+.btngrp{
+  display: inline-block;
+  float: right;
+  margin: 0px -4px;
+  height: 100%;
+  a{
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    span.ui-button-icon-primary{
+      left: 10%;
+    }
+  }
+}
+
+.hidden{
+  display: none;
+}

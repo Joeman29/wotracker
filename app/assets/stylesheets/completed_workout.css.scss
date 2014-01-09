@@ -1,0 +1,42 @@
+// Place all the styles related to the CompletedWorkout controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "vars";
+#calendar-area{
+  width:70%;
+  float:left;
+}
+.workout-log-entry{
+  border: 1px solid;
+  border-radius: 7px;
+  padding: 15px;
+  border-color: #C4D8E9;
+  //@include background-image(linear-gradient(lighten(#c5d3f5, 0),lighten(beige, 5), lighten(beige, 5),lighten(beige, 5), lighten(#c5d3f5, 0)));
+  margin: 10px;
+  //text-align: center;
+  box-shadow: inset 0px 0px 8px 0px #C4D8E9;
+  background-color: lighten(antiquewhite, 8);
+  color: $blue;
+  cursor: pointer;
+  display: block;
+  &:hover{
+    background-color: aliceblue;
+  }
+}
+.workout-entry-detail-view{
+  display: none;
+}
+#workout-detail-store{
+  display: none;
+}
+#workout-detail-views{
+  float: right;
+  width:30%;
+}
+.workout-rating{
+  float:right;
+  span.ui-icon{
+    display: inline-block;
+  }
+
+}

@@ -1,0 +1,24 @@
+<% if @workout.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@workout.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% @workout.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+<div id="new_workout_form">
+
+  <%= form_for :workout, url:{ action: :create } do |f| %>
+
+   <table>   <tr><td><%= f.label :name, 'Workout Name:' %></td>
+      <td><%= f.text_field :name %></td></tr>
+     <tr><td><%= f.label :goal_time, 'Goal Time:' %></td>
+       <td><%= f.text_field :goal_time, class: 'number' %> minutes</td></tr>
+      <tr><td><%= f.label :descript, 'Description:' %></td>
+      <td><%= f.text_area :descript, size: '50x6' %></td></tr>
+      <tr><td><%= f.submit 'Create New Workout' %></td></tr></table>
+  <% end %>
+</div>
