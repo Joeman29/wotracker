@@ -45,13 +45,24 @@
     <%= f.label :city, 'City:' %><br>
     <%= f.text_field :city %>
   </div>
-  <div class="field">
+    <script>
+      $("#country-select").change();
+      function countryChange(){
+        if($("#country-select").val() == 'United States'){
+           $('#state-select').show();
+        }
+        else{
+           $("#state-select").hide();
+        }
+      }
+    </script>
+  <div class="field" id="state-select">
     <%= f.label :state, 'State:' %><br>
     <%= f.select :state, us_states %>
   </div>
   <div class="field">
     <%= f.label :country, 'Country:' %><br>
-    <%= f.country_select :country %>
+    <%= f.country_select :country, nil, {},{onchange: 'countryChange()', id:'country-select'} %>
   </div>
   <div class="actions">
     <% if @editing %>

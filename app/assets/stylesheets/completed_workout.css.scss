@@ -22,6 +22,25 @@
   &:hover{
     background-color: aliceblue;
   }
+  .workout-rating{
+    float:right;
+    margin-top:-7px;
+    span.ui-icon{
+      background-image: url('images/stars-sprites.png');
+      width: 34px;
+      height:34px;
+      display: inline-block;
+    }
+    .my-ui-icon-star{
+      background-position: -32px 0px;
+    }
+    .my-ui-icon-empty{
+      background-position: 1px 0px;
+    }
+    .my-ui-icon-hover{
+      background-position: -65px 0px;
+    }
+  }
 }
 .workout-entry-detail-view{
   display: none;
@@ -32,11 +51,4 @@
 #workout-detail-views{
   float: right;
   width:30%;
-}
-.workout-rating{
-  float:right;
-  span.ui-icon{
-    display: inline-block;
-  }
-
 }

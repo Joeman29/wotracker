@@ -17,15 +17,19 @@
                 var num = $(e.target).data('rating');
                 var currIcons = $(e.target).parent('.workout-rating').find('.ui-icon');
                 for(var i=0; i<num; i++){
-                    $(currIcons[i]).addClass('ui-icon-star').removeClass('ui-icon-carat');
+                    $(currIcons[i]).addClass('my-ui-icon-hover').removeClass('my-ui-icon-empty').removeClass('my-ui-icon-star');
                 }
             });
             ratingIcons.mouseout(function(e){
                 var currIcons = $(e.target).parent('.workout-rating').find('.ui-icon');
                 currIcons.each(function(i, f){
                     if(!$(f).data('real-rating')){
-                        $(f).addClass('ui-icon-carat').removeClass('ui-icon-star');
+                        $(f).addClass('my-ui-icon-empty');
                     }
+                    else{
+                        $(f).addClass('my-ui-icon-star')
+                    }
+                    $(f).removeClass('my-ui-icon-hover');
                 });
             });
             ratingIcons.click(function(e){
@@ -33,15 +37,15 @@
                 var currIcons = $(e.target).parent('.workout-rating').find('.ui-icon');
                 var i;
                 for(i=0; i<num; i++){
-                    $(currIcons[i]).addClass('ui-icon-star').removeClass('ui-icon-carat').data('real-rating', true);
+                    $(currIcons[i]).addClass('my-ui-icon-star').removeClass('my-ui-icon-empty').data('real-rating', true);
                 }
                 for(i=i; i<5;i++){
-                    $(currIcons[i]).addClass('ui-icon-carat').removeClass('ui-icon-star').data('real-rating', false);
+                    $(currIcons[i]).addClass('my-ui-icon-empty').removeClass('my-ui-icon-star').data('real-rating', false);
                 }
-                var id = $(e.target).parent('.workout-log-entry').data('id')
+                var id = $(e.target).parents('.workout-log-entry').data('id');
                 $.ajax('<%= api_user_completed_workouts_path(user_id:current_user.id) %>/'+id , {
-                    method: 'put',
-                    data: {rating: num},
+                    method: 'patch',
+                    data: {workout:{rating: num}},
                     success: function(response){
                         console.log(response);
                     },

@@ -43,14 +43,11 @@ group :test do
   gem 'capybara-webkit'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
-  #gem 'guard-rspec' , require: false
-end
-gem 'rspec-rails', :group => [:test, :development]
-group :development do
+  gem 'rspec-rails'
   gem 'guard-rspec' , require: false
 end
 gem 'rb-readline', '~> 0.4.2'
-
+gem 'active_attr'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

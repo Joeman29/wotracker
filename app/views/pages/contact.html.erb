@@ -1,2 +1,18 @@
-<h1>Pages#contact</h1>
-<p>Find me in app/views/pages/contact.html.erb</p>
+<%= notice %>
+<h1>Contact Us</h1>
+<%= form_for @message do |f| %>
+    <div class="field">    <%= f.label :name, 'Your name:*' %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">    <%= f.label :subject, 'Subject:' %>
+      <%= f.text_field :subject %>
+    </div>
+    <div class="field">    <%= f.label :email, 'Your email:*' %>
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :content, 'Your message:*' %>
+      <%= f.text_area :content %>
+    </div>
+    <%= f.submit 'Send Message' %>
+<% end %>

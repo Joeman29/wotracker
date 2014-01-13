@@ -5,10 +5,10 @@
         Time: <%= time_to_string cw.time %>
          <span class="workout-rating">
            <% for i in 1..cw.rating do%>
-               <%= content_tag(:span,'', {class:'filled-star ui-icon ui-icon-star', data:{real_rating:"#{true}", rating:"#{i}"}}) %>
+               <%= content_tag(:span,'', {class:'filled-star ui-icon my-ui-icon-star', data:{real_rating:"#{true}", rating:"#{i}"}}) %>
            <% end %>
            <% for z in (i || 0)+1..5 do %>
-               <%= content_tag(:span, '', {class:'empty-star ui-icon ui-icon-carat', data:{rating:"#{z}"}}) %>
+               <%= content_tag(:span, '', {class:'empty-star ui-icon my-ui-icon-empty', data:{rating:"#{z}"}}) %>
            <% end  %>
          </span>
       </a>

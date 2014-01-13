@@ -5,6 +5,7 @@ WOtracker::Application.routes.draw do
   get 'logout', to: 'users#logout'
   get 'register', to: 'users#new'
   get ':action', to: 'pages'
+  post 'contact', to: 'pages#send_message', as: :messages
   post 'users/:user_id/workouts/:id/complete', to: 'completed_workouts#complete', as: :complete_workout
   resources :users, only: [:edit, :create, :destroy] do
     resources :workouts do
