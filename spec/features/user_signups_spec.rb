@@ -17,7 +17,7 @@ describe "UserSignups" do
       fill_in 'Confirm Password:', with: '987efg'
       fill_in 'City:', with: 'Yahupitz'
       select 'Idaho', from: 'State:'
-      select 'United States', from: 'Country:'
+      select 'United States', from: 'country-select'
       click_button 'Create My Account'
       page.should have_content('My Profile')
     end

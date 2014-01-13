@@ -8,23 +8,23 @@
       dialog.find("#cancel").click(function(){dialog.dialog('close')});
   });
 </script>
-<%= flash[:notice] %>
+<div class="notice"><%= flash[:notice] %></div>
 <div id="workouts-area">
+  <table>
     <% @workouts.each do |workout|  %>
-        <h3 id="workout-item"><span id="workout-name"><%= workout.name %>,</span>
-          <span class="workout-goal-time">Goal Time -- <%= workout.goal_time %></span>
-          <div class="btngrp">
+        <tr><td><h3 id="workout-item"><span id="workout-name"><%= workout.name %>,</span>
+          <span class="workout-goal-time">Goal Time -- <%= pluralize workout.goal_time, 'minute' %></span></h3></td>
+          <td class="btngrp">
             <%= link_to '', edit_user_workout_path(id:workout.id, user_id: current_user.id), class:'workout-edit-button', title:'Edit'%>
             <%= link_to '', play_user_workout_path(id:workout.id), class:'workout-play-button', title: 'Play' %>
             <%= link_to '', user_workout_path(id:workout.id), class:'workout-delete-button', title:'Delete' %>
-          </div>
-        </h3>
-        <div class="content">
-            Description: <br><%= workout.descript %>
-        </div>
-
+          </td>
+        </tr>
+        <tr class="workout-description">
+            <td>Description:<br><%= workout.descript %></td><td></td>
+        </tr>
   <% end %>
-
+  </table>
 </div>
 <div id="delete-workout-dialog" style="display:none">
   Are you sure you want to delete this workout?<br>

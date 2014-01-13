@@ -19,8 +19,13 @@ $.widget('custom.borderlessButton', $.ui.button, {
     @.element.removeClass('ui-state-default')
     return e
 })
+
+#flashCount=0
 $(document).on('myPageLoadEvent', ->
-  $("#workouts-area").accordion({collapsible: true, active:false})
+#  if flashCount == 0
+#    flashMessage=$(".notice").text()
+#    if flashMessage
+  #$("#workouts-area").accordion({collapsible: true, active:false})
   #$(".btngrp a").button()
   $(".workout-edit-button").borderlessButton(icons:{primary: 'ui-icon-pencil'})
   $(".workout-play-button").borderlessButton(icons:{primary: 'ui-icon-play'})

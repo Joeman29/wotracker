@@ -1,6 +1,8 @@
 <script>$(document).on( 'myPageLoadEvent', function(){WOTracker.initialize();});
 
 </script>
+<div id="workout-edit-instructions" class="help-text">Double-click any text to edit.<br>
+  Drag supersets and exercises to change their order.</div>
 <div id="workout-edit-area" data-loadurl="<%= api_user_workout_path(user_id: current_user.id, id:@workout.id) %>">
 </div>
 <%= link_to 'Do this workout now!', play_user_workout_path(id: @workout.id), 'data-no-turbolink'=>true %>

@@ -22,12 +22,12 @@ class WOTracker.Views.WorkoutView extends Backbone.View
     @model.segments.add newSeg
   edit_value: (e)->
     targetTag = $(e.target)
+    oldVal = targetTag.text()
     targetTag.text('')
-    $("<form><input type='text' name='#{targetTag.data('workout')}'></form>").appendTo(targetTag)
+    $("<form><input type='text' name='#{targetTag.data('workout')}' value='#{oldVal}'></form>").appendTo(targetTag)
   change_value: (e)->
     e.preventDefault()
     input = $(e.target).find('input')
     attr = input.attr('name')
-    @model.attributes[attr] = input.val()
-    #@model.save()
+    @model.set attr, input.val()
     @render()

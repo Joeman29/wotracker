@@ -26,6 +26,11 @@ body {
   background-color: $white;
   margin: 0 auto;
 }
+.help-text{
+  color:$red;
+  font-size: .7em;
+  text-align: center;
+}
 header {
   font-family: Georgia, Times, serif;
   background: $blue;
@@ -121,10 +126,6 @@ header, section, footer, aside, article, figure {
 	display: block;
 }
 .btngrp{
-  display: inline-block;
-  float: right;
-  margin: 0px -4px;
-  height: 100%;
   a{
     border-radius: 50%;
     height: 20px;

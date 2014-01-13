@@ -4,6 +4,6 @@ class ContactUsMailer < ActionMailer::Base
   def send_contact_message(params)
     @user =  params[:name]
     @content= params[:content]
-    mail(to:ADMIN_EMAIL, subject: params[:subject])
+    mail(to:ADMIN_EMAIL, from:params[:email], subject: params[:subject])
   end
 end

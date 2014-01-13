@@ -73,7 +73,7 @@ class UsersController < ApplicationController
 
   def historyCalendar
     setDates
-    cw = CompletedWorkout.all
+    cw = current_user.completed_workouts
     cw = cw.where('date >= ?', params[:fromDate]) if @fromDate
     cw = cw.where('date <= ?', params[:toDate]) if @toDate
     @completed_workouts = cw

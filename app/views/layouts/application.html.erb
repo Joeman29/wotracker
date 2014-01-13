@@ -22,8 +22,8 @@
 
   <div id="under-nav"><div id="content">
     <div class="sidebar1">
-        <ul class="nav">
-          <% if current_user %>
+      <% if current_user %>
+          <ul class="nav">
           <li><%= link_to 'My Profile', edit_user_path(current_user) %></li>
           <li><%= link_to 'Create New Workout', new_user_workout_path(current_user) %></li>
           <li><%= link_to 'My Workouts', user_workouts_path(current_user) %></li>
@@ -41,25 +41,22 @@
               <% end %>
             </ul>
           </li>
-          <li><%= link_to 'My Schedule', calendar_user_path(current_user) %></li>
+          <!--<li><%= link_to 'My Schedule', calendar_user_path(current_user) %></li>-->
           <li><%= link_to 'My History', log_user_path(current_user) %></li>
-          <% end %>
+
         </ul>
+          <% end %>
     <!-- end .sidebar1 --></div>
   <main>
 
     <%= yield %>
   </main>
   <aside>
-    <h4>Backgrounds</h4>
-    <p></p>
+
   </aside>
   </div></div> <!-- end .container --></div>
   <footer>
     <p>Copyright Joeman</p>
-    <address>
-      Address Content
-    </address>
   </footer>
 
 </body>
