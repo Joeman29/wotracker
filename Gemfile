@@ -48,6 +48,8 @@ group :test do
 end
 gem 'rb-readline', '~> 0.4.2'
 gem 'active_attr'
+
+gem 'rails_12factor', group: :production
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
@@ -59,3 +61,4 @@ gem 'active_attr'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+ruby '2.0.0'
