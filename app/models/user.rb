@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
   validates :email, :presence => true, :length => {:maximum =>  50},
             :format => {:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/ },
             :uniqueness => true
-  validates :password, :presence => true, :length => {:minimum => 5}, :confirmation => {:message => "Passwords don't match"} , :on => :create
+  validates :password, :presence => true, :length => {:minimum => 5}, :confirmation => {:message => "Passwords don't match"}, :on => :create
+  validates :password, :presence => true, :length => {:minimum => 5}, :confirmation => {:message => "Passwords don't match"}, :on => :update
   validates :first_name, :presence => {:message => 'Enter first name'}, :length => {:within => 2..50}
   validates :last_name, :presence => {:message => 'Enter last name'}, :length => {:within => 2..50}
 

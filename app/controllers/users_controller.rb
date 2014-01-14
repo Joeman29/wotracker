@@ -29,10 +29,11 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user.password = params[:user][:password]
     if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
+      redirect_to edit_user_path, notice: 'Profile was successfully updated.'
     else
-      render action: 'edit'
+      redirect_to edit_user_path, notice: 'Could not update profile.'
     end
   end
 

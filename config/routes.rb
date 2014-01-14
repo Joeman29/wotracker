@@ -7,7 +7,7 @@ WOtracker::Application.routes.draw do
   get ':action', to: 'pages'
   post 'contact', to: 'pages#send_message', as: :messages
   post 'users/:user_id/workouts/:id/complete', to: 'completed_workouts#complete', as: :complete_workout
-  resources :users, only: [:edit, :create, :destroy] do
+  resources :users, only: [:edit, :create, :destroy, :update] do
     resources :workouts do
       member do
         get 'play'

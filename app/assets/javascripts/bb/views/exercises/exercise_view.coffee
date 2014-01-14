@@ -7,7 +7,6 @@ class WOTracker.Views.ExerciseView extends Backbone.View
     'click .edit-exercise': 'edit_exercise'
     'click .delete-exercise': 'delete_exercise'
     'click .cancel-exercise-edit': 'cancel_edit'
-    'click .exercise-promote': 'promote'
     'change select, input': 'changeValue'
     'dblclick .exercise-name': 'showEditName'
   render: ->

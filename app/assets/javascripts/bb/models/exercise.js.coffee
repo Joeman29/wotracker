@@ -15,17 +15,18 @@ class WOTracker.Models.Exercise extends Backbone.Model
       url
     @view = new WOTracker.Views.ExerciseView(model: this)
     @on 'change', ->
-      @view.render()
       @save()
-  displayValue: ->
-    value = ''
-    kind = @attributes.kind
-    return value unless kind
-    if kind == 'bodyweight' || kind == 'lifting'
-      value += "#{@attributes.sets}X#{@attributes.reps}"
-    if kind == 'lifting'
-      value += " #{@attributes.weight} #{@attributes.weight_unit}"
-    if kind == 'cardio'
-      value += "#{@attributes.time} minutes"
-    value
+      @view.render()
+    @on 'invalid', ->
+      @attributes = @previousAttributes()
+      alert @validationError
+  validate: (attrs, options)->
+    if attrs.name.length < 1
+      return "Name cannot be blank"
+    if @previousAttributes().time && !$.isNumeric(attrs.time)
+      return 'Time must be a number'
+    if @previousAttributes().weight && !$.isNumeric(attrs.weight)
+      return 'Weight must be a number'
+    if @previousAttributes().reps && !$.isNumeric(attrs.reps)
+      return 'Reps must be a number'
 

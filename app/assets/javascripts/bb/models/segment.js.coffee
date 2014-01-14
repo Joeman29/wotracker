@@ -16,7 +16,15 @@ class WOTracker.Models.Segment extends Backbone.Model
     @collection.on 'reset', @collectionReset, this if @collection
     @on 'change', ->
       @exercises.url = "#{@url()}/exercises/"
-      @view.render()
       @save()
+      @view.render()
+    @on 'invalid', ->
+      @attributes = @previousAttributes()
+      alert @validationError
+  validate: (attrs, options)->
+    if(attrs.name.length < 1)
+      return 'Cannot be blank'
+    unless $.isNumeric(attrs.rest_time)
+      return 'Rest time must be a number'
   collectionReset: ->
     @exercises.reset @get 'exercises'
