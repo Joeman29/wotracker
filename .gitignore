@@ -19,8 +19,8 @@
 #Ignore Thumbs.db
 Thumbs.db
 #ignore sensitive info
-secret_token.rb
-session_store.rb
+#secret_token.rb
+#session_store.rb
 database.yml
 zeus.json
 .zeus.sock
