@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    @user = User.new(country:'United States')
   end
 
   def edit
