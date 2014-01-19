@@ -1,8 +1,8 @@
 WOtracker::Application.routes.draw do
   root 'pages#index'
-  get 'login', to: 'users#login'
-  post 'login', to: 'users#process_login'
-  get 'logout', to: 'users#logout'
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  get 'logout', to: 'sessions#destroy'
   get 'register', to: 'users#new'
   get ':action', to: 'pages'
   post 'contact', to: 'pages#send_message', as: :messages

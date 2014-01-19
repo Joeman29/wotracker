@@ -41,30 +41,6 @@ class UsersController < ApplicationController
     @user.destroy
       redirect_to users_url
   end
-  def login
-
-  end
-  def process_login
-    @user = User.where(username: params[:username])
-    if @user.empty?
-      flash[:notice] = "No such username.  <a href='#{register_path}'>Create an account</a>"
-      redirect_to action: 'login'
-      return false
-    end
-    @user = @user.take
-    if @user.authenticate?(params[:password])
-      session[:user_id] = @user.id
-      redirect_to user_workouts_path(@user)
-    else
-      flash[:notice] = 'Password does not match username.'
-      redirect_to action: 'login'
-    end
-
-  end
-  def logout
-    session[:user_id] = nil
-    redirect_to action: 'login'
-  end
   def calendar
 
   end

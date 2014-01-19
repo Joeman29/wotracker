@@ -155,3 +155,13 @@
     color: $darkblue;
   }
 }
+.btngrp{
+  a{
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    span.ui-button-icon-primary{
+      left: 10%;
+    }
+  }
+}

@@ -34,7 +34,7 @@ $(document).on('myPageLoadEvent', ->
     e.stopPropagation()
   $("button, input[type='submit']").button()
   $("input.number").spinner()
-  $("input[type!='submit'], textarea").spinnerLike()
+  $("input[type='text'],input[type='number'], input[type='email'], input[type='password'], textarea").spinnerLike()
   $("nav a").on('mouseover', ->
     $(@).addClass('ui-state-default')
   )
